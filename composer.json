@@ -1,0 +1,19 @@
+{
+    "name": "wallend/newman-php-coverager",
+    "description": "Library for newman test code coverage",
+    "authors": [
+        {
+            "name": "Kindyakov Nikolay",
+            "email": "kindyakov.nikolay@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpunit/php-code-coverage": "^6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+}
