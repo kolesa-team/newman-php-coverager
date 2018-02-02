@@ -62,14 +62,14 @@ class Coverage
      */
     public function __construct($config = [])
     {
-        if ($this->getHeader('PHPNEWMAN_ON') == 1) {
+        if ($this->getHeader('HTTP_PHPNEWMAN_ON') == 1) {
             if (empty($config)) {
                 $this->config = [
                     'testName' => $this->defaultTestName,
                     'path'     => $_SERVER['DOCUMENT_ROOT'] . '/../../' . $this->defaultDir . "/" . $this->config['testName'],
                 ];
 
-                array_merge($this->config, $this->loadConfig());
+                $this->config = array_merge($this->config, $this->loadConfig());
             } else {
                 $this->config = $config;
             }
@@ -99,8 +99,8 @@ class Coverage
      */
     public function loadConfig()
     {
-        if ($this->getHeader('PHPNEWMAN')) {
-            return json_decode($this->getHeader('PHPNEWMAN'));
+        if ($this->getHeader('HTTP_PHPNEWMAN')) {
+            return json_decode($this->getHeader('HTTP_PHPNEWMAN'));
         } else {
             return [];
         }
@@ -114,10 +114,8 @@ class Coverage
      */
     public function getHeader($name)
     {
-        $headers = headers_list();
-
-        if (isset($headers[$name])) {
-            return $headers[$name];
+        if (isset($_SERVER[$name])) {
+            return $_SERVER[$name];
         }
 
         return null;
