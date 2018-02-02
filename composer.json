@@ -7,13 +7,9 @@
             "email": "kindyakov.nikolay@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "version": "0.0.1-b",
     "require": {
-        "phpunit/php-code-coverage": "^6.0"
-    },
-    "autoload": {
-        "classmap": [
-            "src/"
-        ]
-    },
+        "phpunit/php-code-coverage": "~5.0",
+        "phpunit/phpcov": "^4.0"
+    }
 }

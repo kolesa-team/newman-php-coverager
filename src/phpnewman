@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @package wallend/newman-php-coverager CLI script
+ */
+
+require(__DIR__ . '/../vendor/autoload.php');
+require('Coverage.php');
+
+if (in_array('--clear-data', $argv)) {
+    $coverager = new newmanPhpCoverager\Coverage();
+
+    $coverager->clear();
+    echo "Reports has been cleared...";
+}
+
+if (in_array('--collect-reports', $argv)) {
+    $application = new SebastianBergmann\PHPCOV\Application;
+
+    $application->run();
+}
