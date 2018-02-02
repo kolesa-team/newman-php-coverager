@@ -13,13 +13,13 @@ class Coverage
      * Default test name
      * @var string
      */
-    protected $defaultTestName  = 'DEBUG';
+    protected $defaultTestName = 'DEBUG';
 
     /**
      * Default output directory
      * @var string
      */
-    protected $defaultDir       = 'phpnewman';
+    protected $defaultDir = 'phpnewman';
 
     /**
      * Default directories assigned to white list
@@ -62,21 +62,25 @@ class Coverage
      */
     public function __construct($config = [])
     {
-        if (empty($config)) {
-            $this->config = [
-                'testName' => $this->defaultTestName,
-                'path'     => $_SERVER['DOCUMENT_ROOT'] . '/../../' . $this->defaultDir . "/" . $this->config['testName'],
-            ];
-        } else {
-            $this->config = $config;
-        }
+        if ($this->getHeader('PHPNEWMAN_ON') == 1) {
+            if (empty($config)) {
+                $this->config = [
+                    'testName' => $this->defaultTestName,
+                    'path'     => $_SERVER['DOCUMENT_ROOT'] . '/../../' . $this->defaultDir . "/" . $this->config['testName'],
+                ];
 
-        if ($this->prepareDir()) {
-            $this->phpCC = new CodeCoverage();
-            $this->addToWhiteList();
-            $this->startListen();
-        } else {
-            throw new \Exception("Can't prepare working directory " . $this->config['path']);
+                array_merge($this->config, $this->loadConfig());
+            } else {
+                $this->config = $config;
+            }
+
+            if ($this->prepareDir()) {
+                $this->phpCC = new CodeCoverage();
+                $this->addToWhiteList();
+                $this->startListen();
+            } else {
+                throw new \Exception("Can't prepare working directory " . $this->config['path']);
+            }
         }
     }
 
@@ -86,6 +90,37 @@ class Coverage
     public function clear()
     {
         $this->phpCC->clear();
+    }
+
+    /**
+     * Load config from header
+     *
+     * @return array|mixed
+     */
+    public function loadConfig()
+    {
+        if ($this->getHeader('PHPNEWMAN')) {
+            return json_decode($this->getHeader('PHPNEWMAN'));
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * Get header variable
+     *
+     * @param $name
+     * @return null
+     */
+    public function getHeader($name)
+    {
+        $headers = headers_list();
+
+        if (isset($headers[$name])) {
+            return $headers[$name];
+        }
+
+        return null;
     }
 
     /**
