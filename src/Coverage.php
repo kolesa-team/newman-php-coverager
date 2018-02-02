@@ -100,7 +100,7 @@ class Coverage
     public function loadConfig()
     {
         if ($this->getHeader('HTTP_PHPNEWMAN')) {
-            return json_decode($this->getHeader('HTTP_PHPNEWMAN'));
+            return (array)json_decode($this->getHeader('HTTP_PHPNEWMAN'), true);
         } else {
             return [];
         }
