@@ -25,7 +25,7 @@ if (!defined('COMPOSER_INSTALLATION')) {
     die(1);
 }
 
-require PHPUNIT_COMPOSER_INSTALL;
+require COMPOSER_INSTALLATION;
 
 if (in_array('--clear-data', $argv)) {
     $coverager = new newmanPhpCoverager\Coverage();
