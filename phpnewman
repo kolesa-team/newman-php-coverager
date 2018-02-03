@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @package wallend/newman-php-coverager CLI script
+ */
+
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    if (file_exists($file)) {
+        define('COMPOSER_INSTALLATION', $file);
+
+        break;
+    }
+}
+
+unset($file);
+
+if (!defined('COMPOSER_INSTALLATION')) {
+    fwrite(
+        STDERR,
+        'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
+        '    composer install' . PHP_EOL . PHP_EOL .
+        'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
+    );
+
+    die(1);
+}
+
+require PHPUNIT_COMPOSER_INSTALL;
+
+if (in_array('--clear-data', $argv)) {
+    $coverager = new newmanPhpCoverager\Coverage();
+
+    $coverager->clear();
+    echo "Reports has been cleared...";
+}
+
+if (in_array('--collect-reports', $argv)) {
+    $application = new SebastianBergmann\PHPCOV\Application;
+
+    $application->run();
+}

@@ -11,5 +11,14 @@
     "require": {
         "phpunit/php-code-coverage": "~5.0",
         "phpunit/phpcov": "^4.0"
+    },
+    "bin": [
+        "phpnewman"
+    ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
     }
 }
+
