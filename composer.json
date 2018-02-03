@@ -7,7 +7,6 @@
             "email": "kindyakov.nikolay@gmail.com"
         }
     ],
-    "version": "0.0.2-b",
     "require": {
         "phpunit/php-code-coverage": "~5.0",
         "phpunit/phpcov": "^4.0"
