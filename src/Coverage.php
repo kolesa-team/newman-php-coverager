@@ -216,7 +216,9 @@ class Coverage
         $reporter->process(
             $this->phpCC, $this->config['path']
             . "/"
-            . str_replace(".", "", microtime(true)));
+            . str_replace(".", "", microtime(true))
+            . '.cov'
+        );
 
     }
 
