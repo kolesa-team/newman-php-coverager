@@ -39,7 +39,8 @@ if (in_array('--clear-data', $argv)) {
 if (in_array('--collect-reports', $argv)) {
     unset($argv[array_search('--collect-reports', $argv)]);
 
-    $application = new SebastianBergmann\PHPCOV\Application;
+    $_SERVER['argv'] = $argv;
+    $application     = new SebastianBergmann\PHPCOV\Application;
 
     $application->run();
 }
