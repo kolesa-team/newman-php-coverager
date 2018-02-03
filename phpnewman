@@ -32,9 +32,13 @@ if (in_array('--clear-data', $argv)) {
 
     $coverager->clear();
     echo "Reports has been cleared...";
+
+    die(0);
 }
 
 if (in_array('--collect-reports', $argv)) {
+    unset($argv[array_search('--collect-reports', $argv)]);
+
     $application = new SebastianBergmann\PHPCOV\Application;
 
     $application->run();
