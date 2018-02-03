@@ -1,13 +1,12 @@
 {
     "name": "wallend/newman-php-coverager",
-    "description": "Library for newman test code coverage",
+    "description": "Library for newman tests phpcode coverage",
     "authors": [
         {
             "name": "Kindyakov Nikolay",
             "email": "kindyakov.nikolay@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "version": "0.0.1-b",
     "require": {
         "phpunit/php-code-coverage": "~5.0",
