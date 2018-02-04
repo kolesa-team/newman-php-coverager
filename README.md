@@ -29,6 +29,8 @@ Environment::init();
 $coverage = new Coverage();
 
 ``` 
+
+If your want to calculate request, you should send header **Phpnewman-On with value 1**
 ### CLi
 ```
 #Generate HTML reports
