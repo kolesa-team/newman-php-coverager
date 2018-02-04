@@ -13,8 +13,8 @@ or
   }
 ```
 
-##How to use?
-###FPM/Apache
+## How to use?
+### FPM/Apache
 
 For listen code coverage you should add Coverage class into top of your application index file.
 
@@ -29,7 +29,7 @@ Environment::init();
 $coverage = new Coverage();
 
 ``` 
-###CLi
+### CLi
 ```
 #Generate HTML reports
 
@@ -40,7 +40,7 @@ php ./vendor/wallend/newman-php-coverager/phpnewman --collect-reports merge /tmp
 
 
 ```
-##Versioning
+## Versioning
 
 There are no production-ready version now, but i'm working for... =) Sorry.
 
