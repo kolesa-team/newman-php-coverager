@@ -28,9 +28,19 @@ if (!defined('COMPOSER_INSTALLATION')) {
 require COMPOSER_INSTALLATION;
 
 if (in_array('--clear-data', $argv)) {
-    $coverager = new newmanPhpCoverager\Coverage();
+    $path = $argv[array_search('--clear-data', $argv) + 1];
 
-    $coverager->clear();
+    if (is_dir($path)) {
+        array_map(
+            function ($file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
+            },
+            glob($path . "/*")
+        );
+    }
+
     echo "Reports has been cleared...";
 
     die(0);

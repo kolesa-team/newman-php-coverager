@@ -13,7 +13,7 @@ class Coverage
      * Default test name
      * @var string
      */
-    protected $defaultTestName = 'DEBUG';
+    protected $defaultTestName = 'default';
 
     /**
      * Default output directory
@@ -66,13 +66,17 @@ class Coverage
             if (empty($config)) {
                 $this->config = [
                     'testName' => $this->defaultTestName,
-                    'path'     => $_SERVER['DOCUMENT_ROOT'] . '/../../' . $this->defaultDir . "/" . $this->config['testName'],
+                    'path'     => $_SERVER['DOCUMENT_ROOT'] . '/../../' . $this->defaultDir . "/",
                 ];
 
                 $this->config = array_merge($this->config, $this->loadConfig());
             } else {
                 $this->config = $config;
             }
+
+            $this->config['testName'] = ($this->config['testName'] == $this->defaultTestName)
+                ? $_SERVER['REQUEST_URI']
+                : $this->config['testName'];
 
             if ($this->prepareDir()) {
                 $this->phpCC = new CodeCoverage();
