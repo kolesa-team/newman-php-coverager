@@ -79,6 +79,7 @@ class Coverage
                 : $this->config['testName'];
 
             if ($this->prepareDir()) {
+                $this->phpCC = new CodeCoverage();
                 $this->addToWhiteList();
                 $this->startListen();
             } else {
