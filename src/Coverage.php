@@ -79,7 +79,6 @@ class Coverage
                 : $this->config['testName'];
 
             if ($this->prepareDir()) {
-                $this->phpCC = new CodeCoverage();
                 $this->addToWhiteList();
                 $this->startListen();
             } else {
@@ -231,7 +230,9 @@ class Coverage
      */
     public function __destruct()
     {
-        $this->stopListen();
-        $this->publishReport();
+        if ($this->getHeader('HTTP_PHPNEWMAN_ON') == 1) {
+            $this->stopListen();
+            $this->publishReport();
+        }
     }
 }
