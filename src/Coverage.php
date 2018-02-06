@@ -25,7 +25,7 @@ class Coverage
      * Default directories assigned to white list
      * @var array
      */
-    protected $defaultWhiteList = [
+    protected $whiteList = [
         'applications',
         'console',
         'common',
@@ -77,6 +77,10 @@ class Coverage
             $this->config['testName'] = ($this->config['testName'] == $this->defaultTestName)
                 ? $_SERVER['REQUEST_URI']
                 : $this->config['testName'];
+
+            if(!empty($this->config['whiteList'])){
+                $this->setWhiteList($this->config['whiteList']);
+            }
 
             if ($this->prepareDir()) {
                 $this->phpCC = new CodeCoverage();
@@ -167,7 +171,7 @@ class Coverage
 
             return false;
         } else {
-            foreach ($this->defaultWhiteList as $dir) {
+            foreach ($this->whiteList as $dir) {
                 $this->phpCC->filter()->addDirectoryToWhitelist($_SERVER['DOCUMENT_ROOT'] . '/../../' . $dir);
             }
         }
@@ -236,4 +240,16 @@ class Coverage
             $this->publishReport();
         }
     }
+
+    /**
+     * Setting white list for coverage
+     *
+     * @param array $whiteList
+     */
+    protected function setWhiteList($whiteList)
+    {
+        $this->whiteList = $whiteList;
+    }
+
+
 }
