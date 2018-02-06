@@ -26,9 +26,7 @@ class Coverage
      * @var array
      */
     protected $whiteList = [
-        'applications',
-        'console',
-        'common',
+
     ];
 
     /**
