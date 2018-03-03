@@ -1,3 +1,4 @@
+![version](https://img.shields.io/github/release/kolesa-team/newman-php-coverager.svg)
 # newman-php-coverager
 PHP-Library for newman test phpcode coverage
 
@@ -44,6 +45,6 @@ php ./vendor/wallend/newman-php-coverager/phpnewman --collect-reports merge /tmp
 ```
 ## Versioning
 
-There are no production-ready version now, but i'm working for... =) Sorry.
+Last stable version is ![version](https://img.shields.io/github/release/kolesa-team/newman-php-coverager.svg)
 
 ***Use latest release, if you want...***
