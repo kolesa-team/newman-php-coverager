@@ -4,7 +4,7 @@ PHP-Library for newman test phpcode coverage
 
 ## Installation
 ```
-composer require wallend/newman-php-coverager: "dev-master"
+composer require wallend/newman-php-coverager:"dev-master"
 ```
 
 or
