@@ -171,7 +171,7 @@ class Coverage
             return false;
         } else {
             foreach ($this->whiteList as $dir) {
-                $this->phpCC->filter()->addDirectoryToWhitelist($_SERVER['DOCUMENT_ROOT'] . '/../../' . $dir);
+                $this->phpCC->filter()->addDirectoryToWhitelist($_SERVER['DOCUMENT_ROOT'] . $dir);
             }
         }
     }
