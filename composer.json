@@ -8,8 +8,8 @@
         }
     ],
     "require": {
-        "phpunit/php-code-coverage": "~5.0",
-        "phpunit/phpcov": "^4.0"
+        "phpunit/php-code-coverage": "^6",
+        "phpunit/phpcov": "^5"
     },
     "bin": [
         "phpnewman"
